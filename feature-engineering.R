@@ -343,6 +343,20 @@ dane4 <- dane4[, ! colnames(dane4) %in% c("Employed_number_total",
 
 
 
+################
+# IV computing # 2
+################
+
+#install.packages('scorecard')
+#library(scorecard)
+
+# Hold scientific notation in df
+options(scipen=999)
+
+# IV
+IV2<-as.data.frame(iv(dane4, y="DefFlag", x = NULL, positive = "bad|1", order = TRUE))
+
+
 
 
 
