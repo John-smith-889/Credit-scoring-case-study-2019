@@ -342,7 +342,6 @@ dane4 <- dane4[, ! colnames(dane4) %in% c("Employed_number_total",
                                                          )]
 
 
-
 ################
 # IV computing # 2
 ################
@@ -356,6 +355,33 @@ options(scipen=999)
 # IV
 IV2<-as.data.frame(iv(dane4, y="DefFlag", x = NULL, positive = "bad|1", order = TRUE))
 
+
+######################
+# Correlation Matrix # 2
+######################
+
+# Lets check again correlation of variables
+
+#install.packages("corrplot")
+library(corrplot)
+
+# Create data matrix from df
+mat <- data.matrix(dane4)
+
+# corelation matrix computation
+mydata.cor = cor(mat)
+corrplot(mydata.cor, tl.cex=0.1)
+
+# look at next bunch of highly correlated variables
+str(dane4[,19:22])
+
+
+# Look more closely at variables correlation
+# Create data matrix from df
+mat <- data.matrix(dane4[19:22]) # 3 pca
+# correlation matrix computation
+mydata.cor = cor(mat)
+corrplot(mydata.cor, tl.cex=0.1) 
 
 
 
