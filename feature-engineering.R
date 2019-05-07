@@ -257,3 +257,20 @@ dane4$DefFlag <- dane3$DefFlag
 
 #str(dane4)
 
+
+######################
+# Correlation Matrix #
+######################
+
+# install.packages("corrplot")
+library(corrplot)
+
+# str(dane3)
+
+# Create data matrix from df
+mat <- data.matrix(dane4)
+
+# corelation matrix computation
+mydata.cor = cor(mat)
+corrplot(mydata.cor, tl.cex=0.1)
+
