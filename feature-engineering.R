@@ -150,3 +150,13 @@ dane2 <- dane2[,! colnames(dane2) %in% c("Job_type",
                                          "Credit_purpose")]
 
 str(dane2)
+
+###########################
+# - deletion in var names # (from var names, couldnt add vars to model)
+###########################
+# (those - was created with dummy variables)
+
+# Change all "-" to "_" in variable names
+names(dane2) <- sub("-","_", names(dane2)) 
+# str(dane2)
+
