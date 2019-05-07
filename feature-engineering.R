@@ -24,7 +24,7 @@ dane <- read.csv2("final_data.csv", header = T, sep = ",", dec = ".")
 
 
 ######################
-# Correlation Matrix #
+# Correlation Matrix # 1
 ######################
 
 # install.packages("corrplot")
@@ -41,7 +41,7 @@ corrplot(mydata.cor, tl.cex=0.1)
 
 
 ##############################
-# PCA for DPD_lag1:DPD_lag12 #
+# PCA for DPD_lag1:DPD_lag12 # 1
 ##############################
 
 pca_dpd <- prcomp(select(dane, DPD_t0:DPD_lag12), scale = TRUE, center = TRUE)
@@ -58,7 +58,7 @@ summary(pca_dpd)
 
 
 ##################################################
-# PCA for NotionalValue_lag1:NotionalValue_lag12 #
+# PCA for NotionalValue_lag1:NotionalValue_lag12 # 2
 ##################################################
 
 pca_nv <- prcomp(select(dane, NotionalValue_lag1:NotionalValue_lag12), scale = TRUE, center = TRUE)
@@ -66,7 +66,7 @@ summary(pca_nv)
 
 
 ######################################################
-# PCA for NotionalOverdue_lag1:NotionalOverdue_lag12 #
+# PCA for NotionalOverdue_lag1:NotionalOverdue_lag12 # 3
 ######################################################
 library(dplyr)
 
@@ -259,7 +259,7 @@ dane4$DefFlag <- dane3$DefFlag
 
 
 ######################
-# Correlation Matrix #
+# Correlation Matrix # 2
 ######################
 
 # install.packages("corrplot")
@@ -277,7 +277,7 @@ corrplot(mydata.cor, tl.cex=0.1)
 
 
 #####################
-# Additional  1 PCA #
+# Additional  1 PCA # 4
 #####################
 
 mat <- data.matrix(dane4[13:16]) # 1 pca
@@ -300,9 +300,9 @@ dane4 <- dane4[, ! colnames(dane4) %in% c("Personal_car_number",
                                        "Employed_industry_number")]
                                        
 
-#####################
-# Additional  2 PCA #
-#####################
+##################
+# Additional PCA # 5
+##################
 
 mat <- data.matrix(dane4[20:36]) # 2 pca
 mydata.cor = cor(mat)
@@ -343,7 +343,7 @@ dane4 <- dane4[, ! colnames(dane4) %in% c("Employed_number_total",
 
 
 ################
-# IV computing # 2
+# IV computing # 
 ################
 
 #install.packages('scorecard')
@@ -357,7 +357,7 @@ IV2<-as.data.frame(iv(dane4, y="DefFlag", x = NULL, positive = "bad|1", order = 
 
 
 ######################
-# Correlation Matrix # 2
+# Correlation Matrix # 3
 ######################
 
 # Lets check again correlation of variables
@@ -384,9 +384,9 @@ mydata.cor = cor(mat)
 corrplot(mydata.cor, tl.cex=0.1) 
 
 
-#####################
-# Additional  3 PCA #
-#####################
+##################
+# Additional PCA # 6
+##################
 
 # PCA
 pca_geo_3 <- prcomp(select(dane4, 19:22), scale = TRUE, center = TRUE)
