@@ -160,3 +160,67 @@ str(dane2)
 names(dane2) <- sub("-","_", names(dane2)) 
 # str(dane2)
 
+
+############################
+# Variables standarization #
+############################
+
+#head(dane2)
+
+dane2$Average_income <- as.numeric(dane2$Average_income)
+dane2$Divorce_number_1000 <- as.numeric(dane2$Divorce_number_1000)
+
+# Standarization of choosen variables ( (e(x) - xn) /std )
+dane3 <- dane2 %>% mutate_each_(funs(scale(.) %>% as.vector), 
+                                     vars=c("GEO_region",
+                                            "Age",
+                                            "Household_children",
+                                            "Monthly_Income",
+                                            "Monthly_Spendings",
+                                            
+                                            "Credit_amount",
+                                            "Number_of_installments",
+                                            "Divorce_number_1000",
+                                            "Personal_car_number",
+                                            "Truck_number",
+                                            "Tractor_number",
+                                            "Agricultural_tractor_number",
+                                            "Building_permit_number",
+                                            "Building_permit_individual_number",
+                                            "Building_project_subbmission_number",
+                                            "Apartment_project_subbmission_number",
+                                            "Apartment_project_subbmission_area",
+                                            "Employed_number_total",
+                                            "Employed_number_men",
+                                            "Employed_number_women",
+                                            "Employed_agricultural_number",
+                                            "Employed_industry_number",
+                                            "Emplyed_trade_transport_number",
+                                            "Employed_finance_number",
+                                            "Employed_other_number",
+                                            "Average_income",
+                                            "Total_population_age_0_14_years",
+                                            "Total_population_age_15_29_years",
+                                            "Total_population_age_30_44_years",
+                                            "Total_population_age_45_59_years",
+                                            "Total_population_age_60_years_or_older",
+                                            "Spending_food",
+                                            "Spending_clothing",
+                                            "Spending_footwear",
+                                            "Spending_household",
+                                            "Spending_glassware",
+                                            "Spending_personal_care",
+                                            "Spending_catering",
+                                            "Spending_electronics",
+                                            "Spending_recreational_and_cultural",
+                                            "Total_population",
+                                            "Working_age_population",
+                                            "Unemployed_total",
+                                            "Unemployed_vocational_number",
+                                            "Unemployed_highschool_and_lower_number",
+                                            "DPD_t0",
+                                            "NotionalOverdue_t0"
+                                            ))
+
+str(dane3)
+
