@@ -241,3 +241,19 @@ options(scipen=999)
 
 # IV
 IV<-as.data.frame(iv(dane3, y="DefFlag", x = NULL, positive = "bad|1", order = TRUE))
+
+
+
+#############################
+# choosing best X variables #
+#############################
+
+# choosing variables with IV > 0.1
+TopIV <- subset(IV, info_value>0.1 | variable == "DefFlag" ) # taking only medium+ predictors
+
+dane4 <- dane3[,TopIV$variable]
+str(dane4)
+dane4$DefFlag <- dane3$DefFlag
+
+#str(dane4)
+
