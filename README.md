@@ -17,7 +17,7 @@ R version 3.5.0 (2018-04-23)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 Running under: Windows >= 8 x64 (build 9200)
 
-other attached packages:
+other attached packages: <br />
 [1] mxnet_1.4.0 <br />
 [2] scorecard_0.2.4 <br />
 [3] fastDummies_1.3.0 <br />
