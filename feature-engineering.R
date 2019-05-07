@@ -224,3 +224,20 @@ dane3 <- dane2 %>% mutate_each_(funs(scale(.) %>% as.vector),
 
 str(dane3)
 
+
+################
+# IV computing #
+################
+# < 0.02	useless for prediction
+# 0.02 to 0.1	Weak predictor
+# 0.1 to 0.3	Medium predictor
+# > 0.3	Strong predictor
+
+# install.packages('scorecard')
+library(scorecard)
+
+# Hold scientific notation in df
+options(scipen=999)
+
+# IV
+IV<-as.data.frame(iv(dane3, y="DefFlag", x = NULL, positive = "bad|1", order = TRUE))
