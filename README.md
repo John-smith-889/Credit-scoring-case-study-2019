@@ -18,11 +18,11 @@ Platform: x86_64-w64-mingw32/x64 (64-bit)
 Running under: Windows >= 8 x64 (build 9200)
 
 other attached packages:
-[1] mxnet_1.4.0       
-[2] scorecard_0.2.4   
-[3] fastDummies_1.3.0 
-[4] dplyr_0.8.0.1     
-[5] corrplot_0.84  
+[1] mxnet_1.4.0 <br />
+[2] scorecard_0.2.4 <br />
+[3] fastDummies_1.3.0 <br />
+[4] dplyr_0.8.0.1 <br />
+[5] corrplot_0.84
 
 
 # Feature engineering
