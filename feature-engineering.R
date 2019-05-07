@@ -126,3 +126,27 @@ dane <- dane[, ! colnames(dane) %in% c("NotionalValue_t0",
                                                                            
 str(dane)
 
+
+###################
+# Dummy variables #
+###################
+
+#install.packages('fastDummies')
+library(fastDummies)
+
+# Creating dummy variables
+dane2 <- fastDummies::dummy_cols(dane, select_columns = c(
+                                                          "Job_type",
+                                                          "Marital_status",
+                                                          "Home_status",
+                                                          "Car_status",
+                                                          "Credit_purpose"))
+
+# deleting old pre-dummy variables
+dane2 <- dane2[,! colnames(dane2) %in% c("Job_type",
+                                         "Marital_status",
+                                         "Home_status",
+                                         "Car_status",
+                                         "Credit_purpose")]
+
+str(dane2)
