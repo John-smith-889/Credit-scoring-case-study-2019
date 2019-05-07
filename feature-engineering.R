@@ -384,7 +384,27 @@ mydata.cor = cor(mat)
 corrplot(mydata.cor, tl.cex=0.1) 
 
 
+#####################
+# Additional  3 PCA #
+#####################
 
+# PCA
+pca_geo_3 <- prcomp(select(dane4, 19:22), scale = TRUE, center = TRUE)
+summary(pca_nv)
+
+
+# Adding new PCs variables to data set
+dane4 <- dane4 %>% 
+  cbind(pca_geo_2$x[,c(1:2)]) %>% # add first 2 components
+  rename( pca_geo_3_1 = PC1, pca_geo_3_2 = PC2)
+
+
+# Removing old variables
+dane4 <- dane4[, ! colnames(dane4) %in% c("Employed_other_number",
+                                          "Total_population_age_15_29_years",
+                                          "Employed_finance_number",
+                                          "Apartment_project_subbmission_number")]
+                               
 
 
 
