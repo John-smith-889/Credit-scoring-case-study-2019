@@ -274,3 +274,84 @@ mat <- data.matrix(dane4)
 mydata.cor = cor(mat)
 corrplot(mydata.cor, tl.cex=0.1)
 
+
+
+#####################
+# Additional  1 PCA #
+#####################
+
+mat <- data.matrix(dane4[13:16]) # 1 pca
+mydata.cor = cor(mat)
+corrplot(mydata.cor, tl.cex=0.1) 
+
+pca_geo_1 <- prcomp(select(dane4, 13:16), scale = TRUE, center = TRUE)
+summary(pca_nv)
+
+# str(dane4[,13:16])
+
+dane4 <- dane4 %>% 
+  cbind(pca_geo_1$x[,c(1:2)]) %>% # add first 2 components
+  rename( pca_geo_1_1 = PC1, pca_geo_1_2 = PC2)
+  
+# str(dane4)
+dane4 <- dane4[, ! colnames(dane4) %in% c("Personal_car_number",
+                                       "Apartment_project_subbmission_area",
+                                       "Employed_number_women",
+                                       "Employed_industry_number")]
+                                       
+
+#####################
+# Additional  2 PCA #
+#####################
+
+mat <- data.matrix(dane4[20:36]) # 2 pca
+mydata.cor = cor(mat)
+corrplot(mydata.cor, tl.cex=0.1) 
+
+
+# PCA
+pca_geo_2 <- prcomp(select(dane4, 20:36), scale = TRUE, center = TRUE)
+summary(pca_nv)
+
+# look at variables which we merge
+str(dane4[,20:36])
+
+# Adding new PCs variables to data set
+dane4 <- dane4 %>% 
+  cbind(pca_geo_2$x[,c(1:2)]) %>% # add first 2 components
+  rename( pca_geo_2_1 = PC1, pca_geo_2_2 = PC2)
+
+# Removing old variables
+dane4 <- dane4[, ! colnames(dane4) %in% c("Employed_number_total",
+                                       "Emplyed_trade_transport_number",
+                                       "Total_population_age_30_44_years",
+                                       "Total_population_age_45_59_years",
+                                       "Total_population_age_60_years_or_older",
+                                       "Spending_food",
+                                       "Spending_clothing",
+                                       "Spending_footwear",
+                                       "Spending_household",
+                                       "Spending_glassware",
+                                       "Spending_personal_care",
+                                       "Spending_catering",
+                                       "Spending_electronics",
+                                       "Spending_recreational_and_cultural",
+                                       "Total_population",
+                                       "Working_age_population",
+                                       "Unemployed_total"
+                                                         )]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
