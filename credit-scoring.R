@@ -103,3 +103,22 @@ model <- mx.model.FeedForward.create(lro1, # activation function
          # (1) model prefix (just name for model)
          # (2) number of epochs per 1 model saving 
          # (3) variable name where logs will be saved
+
+
+
+# plot the training process errors 
+plot(logger$eval, type="l")
+
+# check minimal error
+min(logger$eval) 
+
+# check position of minimal error model
+min <- which.min(logger$eval)
+
+# load model from tracking which minimize error
+model <- mx.model.load(prefix="model_gen_1", iteration = min)
+
+# General structure of MLP on chart
+# graph.viz(model$symbol)
+
+
