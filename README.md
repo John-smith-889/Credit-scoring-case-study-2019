@@ -6,7 +6,7 @@ Repository contains code for performing prediction of defaults using MLP in MXNe
 
 Code for feature engineering and modeling is provided.
 
-Data is not available for this project due to lack of permission.
+Data is not available for this project due to lack of permission. <br />
 Code for model evaluation is also restricted.
 
 ## Environment  settings and package versions
@@ -35,7 +35,7 @@ Techniques which were used:
 - merging correlated variables with PCA
 
 
-# Credit risk modeling
+# Credit risk modelling
 
 Separated .R file is provided for data modeling.
 
