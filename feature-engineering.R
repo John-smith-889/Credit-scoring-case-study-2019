@@ -423,6 +423,18 @@ str(dane4[,17:21])
 # lets stop pca for a while and do NNets
 
 
+#################################################################
+# Filther off observations without known DefFlag value attached #
+#################################################################
+
+
+library(dplyr)
+# filtering out the data without DefFlags 
+dane5 <- dane4 %>% filter(!is.na(DefFlag))
+str(dane5) # 70k obs
+# DefFlag - Default Flag - flag in context of not paid cash by customers risk 
+
+
 
 
 
