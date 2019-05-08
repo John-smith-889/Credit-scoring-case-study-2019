@@ -47,3 +47,23 @@ mx.callback.cus <- function(prefix, period, logger=NULL) {
 }
 
 
+#############################
+# Creating ANN step by step #
+#############################
+
+data <- mx.symbol.Variable("data")
+# First layer
+fc1 <- mx.symbol.FullyConnected(data, num_hidden=12)
+# Activation function for parameters explosion prevention
+act1 = mx.symbol.Activation(data=fc1, name='sig', act_type="sigmoid")
+# 2nd layer
+fc2 = mx.symbol.FullyConnected(data=act1, name='fc2', num_hidden=18)
+# 3rd layer
+fc3 = mx.symbol.FullyConnected(data=fc2, name='fc3', num_hidden=24)
+# 4th layer
+fc100 = mx.symbol.FullyConnected(data=fc3, name='fc100', num_hidden=1)
+# Output
+lro1 <- mx.symbol.LogisticRegressionOutput(fc100)
+
+# error logging to this variable
+logger <- mx.metric.logger$new()
