@@ -105,6 +105,9 @@ model <- mx.model.FeedForward.create(lro1, # activation function
          # (3) variable name where logs will be saved
 
 
+########################
+# Best model selection #
+########################
 
 # plot the training process errors 
 plot(logger$eval, type="l")
@@ -121,4 +124,16 @@ model <- mx.model.load(prefix="model_gen_1", iteration = min)
 # General structure of MLP on chart
 # graph.viz(model$symbol)
 
+
+##############
+# Prediction #
+##############
+
+# prediction on training and validation set
+pred_training <- predict(model, training2.x)
+pred_valid <- predict(model, valid2.x)
+
+# transforming training prediction into df
+pred_training2 <- t(as.data.frame(pred_training))
+pred_valid2 <- t(as.data.frame(pred_valid))
 
