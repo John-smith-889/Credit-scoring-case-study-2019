@@ -67,3 +67,39 @@ lro1 <- mx.symbol.LogisticRegressionOutput(fc100)
 
 # error logging to this variable
 logger <- mx.metric.logger$new()
+
+
+# MLP model creation
+model <- mx.model.FeedForward.create(lro1, # activation function
+                                     X=training2.x, 
+                                     y=training2.y, 
+         ctx=mx.cpu(), # cpu job
+         num.round=400, # number of epochs
+         eval.metric = mx.metric.logloss, # options:  logloss, logistic_acc, 
+         # accuracy, top_k_accuracy, mse, rmse
+         # rmsle - Root Mean Squared Logarithmic Error
+         # Perplexity
+         # mae - Mean Absolute Error
+         eval.data = list(data=valid2.x, label = valid2.y), # data for 
+         # instant evaluation
+         
+         optimizer = "adam", # options: sgd, rmsprop, adagrad, AdaDelta, 
+                             # nag (Nesterov Accelerated SGD)
+         array.batch.size = 128, # 
+         learning.rate=0.003, # rate of wages corrections power
+         # momentum = 0.15, # not needed with adam optimizer
+         array.layout = "rowmajor",
+         verbose=T,
+         
+         # model checkpoint
+         # epoch.end.callback = mx.callback.save.checkpoint("model_gen_1"),
+         
+         # error logging to "logger"
+         # epoch.end.callback = mx.callback.log.train.metric(1, logger))  
+         
+         # custom callback function
+         epoch.end.callback = mx.callback.cus("model_gen_1", 1, logger)) 
+         # Arguments:
+         # (1) model prefix (just name for model)
+         # (2) number of epochs per 1 model saving 
+         # (3) variable name where logs will be saved
