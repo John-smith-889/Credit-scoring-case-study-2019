@@ -137,3 +137,20 @@ pred_valid <- predict(model, valid2.x)
 pred_training2 <- t(as.data.frame(pred_training))
 pred_valid2 <- t(as.data.frame(pred_valid))
 
+##############
+# Evaluation #
+##############
+
+Gini_value(pred_training2, training$DefFlag)
+Gini_value(pred_valid2, valid$DefFlag)
+
+
+# Example results:
+
+# layers 12 18 24 1
+# [1] 0.5363481 # gini on training set
+# [1] 0.5151612 # gini on valid set
+
+
+
+
