@@ -436,6 +436,67 @@ str(dane5) # 70k obs
 
 
 
+############################################
+# dividing on training and validation part #
+############################################
+
+# choosing rows for division
+set.seed(0)
+rand <- sample(1:nrow(dane5), 0.8*nrow(dane5))
+
+# Training set
+training <- dane5[rand,] # wybieramy obserwacja,wiec po comma nic nie dajemy
+ str(training)
+
+# Valid set
+valid <- dane5[-rand,]
+# str(train)
+
+
+############################
+# Data preparation for MLP #
+############################
+
+training2 <- data.matrix(training)
+valid2 <- data.matrix(valid)
+all_data <- data.matrix(dane4)
+# automatic change of label data to nummeric data 
+
+training2.x = training2[,! colnames(training2) %in% c("DefFlag")]
+#head(training2.x)
+training2.y = training2[,"DefFlag"]
+
+valid2.x = valid2[,! colnames(valid2) %in% c("DefFlag")]
+
+valid2.y = valid2[,"DefFlag"]
+
+# data with all observation for further evaluation
+all_x_data <- all_data[,! colnames(all_data) %in% c("DefFlag")]
+
+
+#################
+# Output for lm #
+#################
+
+# training
+
+# valid
+
+# dane4 (explanatory variables with all observations)
+
+##########################
+# Output for nnet mxnetR #
+##########################
+
+# training2.x
+# training2.y
+
+# valid2.x
+# valid2.y
+
+# all_x_data
+
+
 
 
 
