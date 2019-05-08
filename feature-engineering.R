@@ -405,6 +405,22 @@ dane4 <- dane4[, ! colnames(dane4) %in% c("Employed_other_number",
                                           "Employed_finance_number",
                                           "Apartment_project_subbmission_number")]
                                
+######################
+# Correlation Matrix # 4
+######################
+
+# install.packages("corrplot")
+#library(corrplot)
+
+# Create data matrix from df
+mat <- data.matrix(dane4)
+
+# correlation matrix computation
+mydata.cor = cor(mat)
+corrplot(mydata.cor, tl.cex=0.1)
+
+str(dane4[,17:21])
+# lets stop pca for a while and do NNets
 
 
 
